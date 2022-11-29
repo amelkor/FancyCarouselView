@@ -242,7 +242,11 @@ namespace FancyCarouselView.Runtime.Scripts
                 StartAutoScrolling();
 
             IsDragging = false;
+
+            OnEndDrag();
         }
+        
+        protected virtual void OnEndDrag(){}
 
         private void OnProgressViewElementClicked(int index)
         {
@@ -259,7 +263,7 @@ namespace FancyCarouselView.Runtime.Scripts
             });
         }
 
-        private void StartAutoScrolling()
+        public void StartAutoScrolling()
         {
             if (IsAutoScrolling)
                 StopAutoScrolling();
@@ -345,7 +349,7 @@ namespace FancyCarouselView.Runtime.Scripts
             _scrollCoroutine = null;
         }
 
-        private void StopAutoScrolling()
+        public void StopAutoScrolling()
         {
             if (!IsAutoScrolling) return;
 
